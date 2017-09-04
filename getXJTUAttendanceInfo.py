@@ -13,6 +13,6 @@ def getXJTUAttendanceData(number):
         return ''
     s=BeautifulSoup(r.text,'html.parser')
     wholeTable=s.find_all('td',{'style':'text-align:center;word-break:break-all;'})
-    for i in range(0,len(wholeTable),2):
-        resultList.append({'time':wholeTable[i].string,'location':wholeTable[i+1].string})
-    return resultList#返回格式[{时间(time),地点(location)}]
+    for i in range(0,len(wholeTable),3):
+        resultList.append({'time':wholeTable[i].string,'location':wholeTable[i+1].string,'type':wholeTable[i+2].string})
+    return resultList#返回格式[{时间(time),地点(location),考勤类型(type)}]
